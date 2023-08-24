@@ -1,5 +1,8 @@
-name: MSYS release
-on: [push, pull_request]
+name: MSYS2 release
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
   msys2-:
@@ -13,7 +16,7 @@ jobs:
         with:
           msystem: MINGW64
           update: true
-          install: git make gcc python gettext
+          install: mingw-w64-x86_64-gcc mingw-w64-x86_64-python mingw-w64-x86_64-isl mingw-w64-x86_64-gettext make texinfo
       - name: CI-Build
         run: |
           echo 'Running in MSYS2!'
@@ -34,6 +37,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./assets.tar.gz
-          asset_name: assets.tar.gz
-          asset_content_type: application/gzip
+          asset_path: ./nios-gdb.tar.xz
+          asset_name: nios-gdb.tar.xz
+          asset_content_type: application/xz
