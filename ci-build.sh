@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gdbVersion="11.2"
+gdbVersion="13.2"
 
 wget https://ftp.gnu.org/gnu/gdb/gdb-${gdbVersion}.tar.xz
 tar -xf gdb-${gdbVersion}.tar.xz
